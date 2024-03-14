@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            border: 3px solid black;
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Crack-opening the Time Capsule from 1999</h1>
+    <hr>
+    <h2>Overview</h2>
+    <p>RSA Security is known for releasing cryptogrtaphic challenges, especially related to RSA Encryption which involve
+        factoring a large number into two large prime factors
+        , a task which inloves a lot of computation.
+        These challenges take upto years of compuatation and evidently show that how RSA Encryption is secure till date.
+        But this article talks about a very specific one i.e. <strong>RSA-240 Challenge</strong>
+        .Completing this challenge held the key to the open a time capsule (explained in further sections).</p>
+    <hr>
+    <h2>History</h2>
+    <p>In 1999, a time capsule was delivered to the famed architect Frank Gehry with instructions to
+        incorporate it into his designs for the building that would eventually
+        host MIT’s Computer Science and Artificial Intelligence Lab, or CSAIL.
+        The time capsule was essentially a museum of early computer history,
+        containing 50 items contributed by the likes of Bill Gates and Tim Berners-Lee.
+        The Capsule is encrypted by RSA Encryption. The only way to open it was finding those prime factors which when
+        multiplied with each other resulted in that 240 bit number.
+        The time capsule wasn’t meant to be opened for another 35 years—unless
+        someone could crack the cryptographic puzzle that was included in its design. The puzzle was designed by Ron
+        Rivest, whose name lends the “R” to RSA, arguably one of the most important cryptographic protocols ever
+        created. He says it wasn’t designed to be complicated. Instead, Rivest created the puzzle so that it should take
+        almost exactly 35 years to compute the answer based on Moore's Law and computation power of that time.
+    </p>
+    <hr>
+    <h2>RSA Encryption</h2>
+    <p>It is as follows :
+    <ul>
+        <li>Two Large prime numbers are selected.</li>
+        <li>Then the product and totient is calculated as shown</li>
+        <li>Finally, public key and private key are generated based on these conditions</li>
+    </ul>
+    <img src="Screenshot from 2024-03-14 11-30-22.png">
+    And the Encryption and Decryption process is as follows :
+    <img src="Screenshot from 2024-03-14 13-00-26.png">
+    </p>
+    <hr>
+    <h2>Number Field Sieve Algorithm</h2>
+    <p>The Number Field Sieve (NFS) is a sophisticated algorithm used for factoring large composite numbers into their
+        prime factors. It's one of the most efficient factoring algorithms known, particularly for numbers with hundreds
+        of digits, which are commonly used in cryptographic applications like RSA.
+
+        The main theorem underlying the Number Field Sieve algorithm is the "Number Field Sieve Discrete Logarithm
+        Theorem." This theorem provides the mathematical basis for the NFS algorithm's efficiency in finding prime
+        factors of large composite numbers. Here's an overview of the key aspects of this theorem:
+    <ul>
+        <li>Discrete Logarithm Problem: The NFS algorithm relies on the discrete logarithm problem in finite fields,
+            which
+            is a mathematical problem that involves finding the exponent (or logarithm) of a given element with respect
+            to a
+            generator in a finite field.
+        </li>
+        <li>Polynomial Congruences: The NFS algorithm works by constructing a series of polynomial congruences modulo
+            the
+            composite number to be factored. These congruences are used to find smooth numbers, which are numbers with
+            small
+            prime factors.</li>
+        <li>Sieving Process: The NFS algorithm employs a sieving process to find relations between the factors of the
+            composite number based on the polynomial congruences. This sieving step is crucial for collecting
+            information
+            that will be used later in the algorithm.</li>
+        <li>Linear Algebra: After sieving, the algorithm solves a large system of linear equations derived from the
+            relations found in the sieving process. This step involves advanced techniques from linear algebra and is a
+            key
+            component of the algorithm's efficiency.</li>
+        <li>Square Root Step: Finally, the algorithm combines the solutions to the linear equations to obtain the prime
+            factors of the composite number using a square root step. This step involves finding congruences modulo the
+            factors and combining them to obtain the prime factors.</li>
+    </ul>
+    </p>
+    <hr>
+    <h2>Verifiable Delayed Functions</h2>
+    Verifiable delay function (VDF), first introduced by Boneh et al. (2018), is a function
+    that requires a prescribed amount of time for evaluations, even if many parallel computation resources are employed,
+    while the result can be verified efficiently.
+    This verification makes the computation evident and credible and these are mostly used in blockchain technology to verify that work was done by a node and the updataion of blocks is valid.
+    <br>Its working can be summarised as follows:
+    <img src="Screenshot from 2024-03-14 18-53-57.png">
+    <hr>
+    <h2>Who Cracked it and How?</h2>
+    <p>On April 15, almost 20 years to the day after Rivest announced the puzzle, <strong>Bernard Fabrot</strong>, a
+        self-taught Belgian
+        programmer, solved it. The puzzle’s original instructions dictated that the solution be sent to the director of
+        the Laboratory for Computer Science, but Fabrot says he was surprised to learn that the lab no longer exists.
+        (It was merged with MIT’s AI lab in 2003 to create CSAIL.) In fact, Fabrot says CSAIL director Daniela Rus
+        wasn’t even aware of the puzzle’s existence when he told her he had the solution.
+        <br>
+        Rivest’s puzzle basically involved finding the number that results from running a squaring operation nearly 80
+        trillion times. For example, if you start with squaring 2 you’d get 4, then square 4 to get 16, and then repeat
+        this process 80 trillion more times. You then take the number you arrive at and run a mathematical operation
+        that uses that number and a number given in the instructions to the puzzle. Doing so spits out a new number that
+        can be translated into a short congratulatory phrase. (Rivest and Fabrot declined to reveal the exact phrase,
+        which will be announced at the opening of the time capsule on May 15.)
+        <br>
+    </p>
+    <p>The key to this puzzle is that it requires sequential operations, which means you can’t get to the answer faster
+        by using parallel computing. You need to go through the squaring process one step at a time, building on the
+        previous answers, to arrive at the solution, so using more computers or throwing a supercomputer at the problem
+        won’t help. <br>The puzzle code was written in <strong>JAVA</strong> but Fabrot realized it could be solved
+        faster if he
+        used the <strong>GNU Multiple Precision Arithmetic Library, free software written in C</strong> for the
+        arithmetic.
+        He dedicated one of the CPU cores on his home desktop computer to running squaring operations in an
+        attempt to solve the puzzle. Three-and-a-half years later, Fabrot finally completed
+        approximately 80 trillion squaring operations and had derived the solution to the puzzle. For doing this
+        computation effieciently, he used <strong>Number Field Sieve algorithm</strong>.
+        <br>
+    <p>
+        What makes more exciting is that at the same time, a group of computer scientists and cryptography experts,
+        led by former Intel engineer Simon Peffers, the Cryptophage group was researching verifiable delay functions as
+        a possible security mechanism for blockchains like Ethereum. <strong> Verifiable delay functions</strong> are a
+        modern take on
+        Rivest’s early work on time-delayed cryptography, and their solution can be derived only through sequential
+        operations. They saw this as an opportunity to test their research.
+        In mid-March, the group began to run an algorithm designed by <strong>xErdinc Ozturk</strong>, a researcher at
+        Sabanci University,
+        that was optimized to reduce the amount of delay between squaring operations. This algorithm was implemented on
+        a field-programmable gate array, a multipurpose chip that is programmed to run only a specific algorithm, which
+        makes it more efficient than a general-purpose CPU. Using Ozturk’s algorithm, this FPGA was about 10 times
+        faster than a high-end commercial CPU running non-optimized software.
+    </p>
+    <p>But bounded by destiny, they just fall short by two months and Bernard was able to crack it first.
+        The contents will be displayed on <strong> May 15</strong> and according to Fabrot he himself see an
+        <strong>original copy of one of the earliest PC games, Zork, included in the capsule
+            and the contributions of Bill Gates and Bob Metcalfe</strong> (invented ethernet).</p>
+    </p>
+</body>
+
+</html>
